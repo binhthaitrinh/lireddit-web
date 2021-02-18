@@ -5,6 +5,10 @@ import theme from "../theme";
 import { createClient } from "urql";
 const client = createClient({
   url: "http://localhost:4000/graphql",
+  fetchOptions: {
+    // need this to be able to set cookie for login, registration
+    credentials: "include",
+  },
 });
 
 function MyApp({ Component, pageProps }) {
