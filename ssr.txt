@@ -1,0 +1,9 @@
+me -> browse a website
+-> next.js server
+-> request graphql server lolcahost 4000
+-> build HTML
+-> send back to browser
+
+Once you launch a page in Next.js, it will switch to client side rendering
+the initial page will be server side render, after that it will not
+It will toggle between SSr and Client side depends on whether the page is loaded or not?
