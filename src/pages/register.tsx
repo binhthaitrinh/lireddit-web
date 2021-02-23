@@ -17,11 +17,11 @@ export const Register: React.FC<registerProps> = ({}) => {
   return (
     <Wrapper variant="small">
       <Formik
-        initialValues={{ username: "", password: "" }}
+        initialValues={{ username: "", password: "", email: "" }}
         onSubmit={async (values, { setErrors }) => {
           console.log(values);
           // return so that the state can update when the promise is resolved(whether success or error)
-          const response = await register(values);
+          const response = await register({ options: values });
           // optional chaining: return undefined if there's no data,
           // if no used optional chaining then it will throw error if there is no data
           if (response.data?.register.errors) {
@@ -39,6 +39,14 @@ export const Register: React.FC<registerProps> = ({}) => {
               label="Username"
               type="text"
             />
+            <Box mt={4}>
+              <InputField
+                name="email"
+                placeholder="Email"
+                label="Email"
+                type="email"
+              />
+            </Box>
             <Box mt={4}>
               <InputField
                 name="password"

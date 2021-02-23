@@ -15,11 +15,11 @@ export const Login: React.FC<{}> = ({}) => {
   return (
     <Wrapper variant="small">
       <Formik
-        initialValues={{ username: "", password: "" }}
+        initialValues={{ usernameOrEmail: "", password: "" }}
         onSubmit={async (values, { setErrors }) => {
           console.log(values);
           // return so that the state can update when the promise is resolved(whether success or error)
-          const response = await login({ options: values });
+          const response = await login(values);
           // optional chaining: return undefined if there's no data,
           // if no used optional chaining then it will throw error if there is no data
           if (response.data?.login.errors) {
@@ -32,9 +32,9 @@ export const Login: React.FC<{}> = ({}) => {
         {({ isSubmitting }) => (
           <Form>
             <InputField
-              name="username"
-              placeholder="username"
-              label="Username"
+              name="usernameOrEmail"
+              placeholder="username or email"
+              label="Username or Email"
               type="text"
             />
             <Box mt={4}>
